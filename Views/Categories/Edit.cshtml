@@ -1,0 +1,44 @@
+﻿@model CyberWalletWeb.Models.Category
+
+<h2 class="mb-4">Edit Category</h2>
+
+<form method="post">
+
+    <input asp-for="Id" type="hidden" />
+
+    <div asp-validation-summary="All"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Category Name
+        </label>
+
+        <input asp-for="Name"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            Type
+        </label>
+
+        <select asp-for="Type"
+                class="form-control">
+
+            <option value="Expense">
+                Expense
+            </option>
+
+            <option value="Income">
+                Income
+            </option>
+
+        </select>
+    </div>
+
+    <button class="btn btn-warning">
+        Update Category
+    </button>
+
+</form>

@@ -1,0 +1,57 @@
+﻿@model CyberWalletWeb.Models.PlannerViewModel
+
+@{
+    ViewData["Title"] = "Planner";
+}
+
+<h2 class="mb-4">Financial Planner</h2>
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm p-4 mb-4">
+
+            <h5>Monthly Budget</h5>
+
+            <h2>R @Model.MonthlyBudget</h2>
+
+            <div class="progress mt-3" style="height:25px;">
+                <div class="progress-bar bg-primary"
+                     style="width:@(Model.BudgetProgress)%;">
+                    @Model.BudgetProgress%
+                </div>
+            </div>
+
+            <p class="mt-3">
+                Spending: R @Model.CurrentSpending
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm p-4">
+
+            <h5>Savings Goal</h5>
+
+            <h2>R @Model.SavingsGoal</h2>
+
+            <div class="progress mt-3" style="height:25px;">
+                <div class="progress-bar bg-success"
+                     style="width:@(Model.SavingsProgress)%;">
+                    @Model.SavingsProgress%
+                </div>
+            </div>
+
+            <p class="mt-3">
+                Saved: R @Model.CurrentSavings
+            </p>
+
+        </div>
+
+    </div>
+
+</div>

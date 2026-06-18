@@ -1,0 +1,46 @@
+﻿@model CyberWalletWeb.Models.IncomeFormViewModel
+
+@{
+    ViewData["Title"] = "Edit Income";
+}
+
+<h2 class="mb-4">Edit Income</h2>
+
+<form method="post">
+
+    <input asp-for="Income.Id" type="hidden" />
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label>Income Category</label>
+
+        <select asp-for="Income.Source"
+                asp-items="Model.Categories"
+                class="form-select">
+
+            <option value="">Select Category</option>
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Amount</label>
+
+        <input asp-for="Income.Amount"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Date</label>
+
+        <input asp-for="Income.Date"
+               type="date"
+               class="form-control" />
+    </div>
+
+    <button class="btn btn-warning">
+        Update Income
+    </button>
+
+</form>

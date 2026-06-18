@@ -1,0 +1,117 @@
+﻿@model CyberWalletWeb.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="col-md-4">
+    <div class="card shadow-lg p-4">
+        <h6 class="text-muted">TOTAL BALANCE</h6>
+        <h2 class="fw-bold text-success">@Model.TotalBalance</h2>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card shadow-lg p-4">
+        <h6 class="text-muted">TOTAL INCOME</h6>
+        <h2 class="fw-bold text-primary">@Model.TotalIncome</h2>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card shadow-lg p-4">
+        <h6 class="text-muted">TOTAL EXPENSES</h6>
+        <h2 class="fw-bold text-danger">@Model.TotalExpenses</h2>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card shadow-lg p-4">
+        <h6 class="text-muted">SAVINGS GOAL</h6>
+        <h2 class="fw-bold text-success">R5,000</h2>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card shadow-lg p-4">
+        <h6 class="text-muted">
+            TOTAL EXPENSE RECORDS
+        </h6>
+
+        <h2 class="fw-bold text-warning">
+            @Model.ExpenseCount
+        </h2>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card shadow-lg p-4">
+        <h6 class="text-muted">
+            TOTAL INCOME RECORDS
+        </h6>
+
+        <h2 class="fw-bold text-info">
+            @Model.IncomeCount
+        </h2>
+    </div>
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-8">
+        <div class="card shadow-sm p-4">
+            <h4>Recent Transactions</h4>
+
+            <table class="table mt-3">
+
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Food</td>
+                        <td>R250</td>
+                        <td>27 May 2026</td>
+                    </tr>
+
+                    <tr>
+                        <td>Transport</td>
+                        <td>R120</td>
+                        <td>26 May 2026</td>
+                    </tr>
+
+                    <tr>
+                        <td>Shopping</td>
+                        <td>R900</td>
+                        <td>25 May 2026</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm p-4">
+            <h4>Monthly Budget</h4>
+
+            <div class="progress mt-4" style="height: 25px;">
+                <div class="progress-bar"
+                     role="progressbar"
+                     style="width: 70%;">
+                    70%
+                </div>
+            </div>
+
+            <p class="mt-3">
+                You have used 70% of your monthly budget.
+            </p>
+        </div>
+    </div>
+
+</div>

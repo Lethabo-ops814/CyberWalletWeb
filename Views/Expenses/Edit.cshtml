@@ -1,0 +1,53 @@
+﻿@model CyberWalletWeb.Models.ExpenseFormViewModel
+
+@{
+    ViewData["Title"] = "Edit Expense";
+}
+
+<h2 class="mb-4">Edit Expense</h2>
+
+<form method="post">
+
+    <input asp-for="Expense.Id" type="hidden" />
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label>Category</label>
+
+        <select asp-for="Expense.Category"
+                asp-items="Model.Categories"
+                class="form-select">
+
+            <option value="">Select Category</option>
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Description</label>
+
+        <input asp-for="Expense.Description"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Amount</label>
+
+        <input asp-for="Expense.Amount"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Date</label>
+
+        <input asp-for="Expense.Date"
+               type="date"
+               class="form-control" />
+    </div>
+
+    <button class="btn btn-warning">
+        Update Expense
+    </button>
+
+</form>
