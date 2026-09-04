@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CyberWalletWeb.Models;
 using CyberWalletWeb.Data;
+using System.Text.Json;
 
 namespace CyberWalletWeb.Controllers
 {
@@ -11,22 +12,35 @@ namespace CyberWalletWeb.Controllers
             decimal totalIncome =
                 IncomeRepository.Incomes.Sum(i => i.Amount);
 
-            decimal totaExpense =
-                ExpenseRepository.Expenses.Sum(equals => equals.Amount);
+            decimal totalExpenses =
+                ExpenseRepository.Expenses.Sum(e => e.Amount);
+
+            var expenseBreakdown =
+                ExpenseRepository.Expenses
+                    .GroupBy(e => e.Category)
+                    .ToDictionary(
+                        g => g.Key,
+                        g => g.Sum(e => e.Amount)
+                    );
 
             var dashboard = new DashboardViewModel
             {
+                // Financial summary
                 TotalIncome = totalIncome,
-                TotalExpenses = totaExpense,
-                TotalBalance = totalIncome - totaExpense,
+                TotalExpenses = totalExpenses,
+                TotalBalance = totalIncome - totalExpenses,
 
-                ExpenseCount =
-                ExpenseRepository.Expenses.Count,
+                // Record counts
+                ExpenseCount = ExpenseRepository.Expenses.Count,
+                IncomeCount = IncomeRepository.Incomes.Count,
+                TransactionCount = ExpenseRepository.Expenses.Count + IncomeRepository.Incomes.Count,
+                BudgetCount = BudgetRepository.Budgets.Count,
 
-                IncomeCount =
-                IncomeRepository.Incomes.Count,
-
+                // Chart data
+                ExpenseLabelsJson = JsonSerializer.Serialize(expenseBreakdown.Keys),
+                ExpenseDataJson = JsonSerializer.Serialize(expenseBreakdown.Values)
             };
+
             return View(dashboard);
         }
     }

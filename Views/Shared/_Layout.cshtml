@@ -3,105 +3,205 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CyberWallet</title>
+    <title>CyberWallet | @ViewData["Title"]</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/css/sidebar.css"
+          asp-append-version="true" />
 </head>
 
 <body>
 
+    @{
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    }
+
     <div class="d-flex">
 
-        <!-- SIDEBAR -->
-        <div class="sidebar bg-dark text-white p-3">
+        <!-- Sidebar -->
+        <div class="sidebar p-4">
 
-            <div class="text-center mb-4">
-                <h2 class="fw-bold text-primary">CyberWallet</h2>
-                <small class="text-light">
+            <div class="text-center mb-5">
+
+                <h2 class="fw-bold text-primary mb-1">
+                    CyberWallet
+                </h2>
+
+                <small>
                     Personal Finance Manager
                 </small>
+
             </div>
 
-            <ul class="nav flex-column">
+            <!-- Main -->
+            <small class="text-uppercase text-secondary fw-bold ps-2">
+                Main
+            </small>
 
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" ? "active-menu" : "")"
+            <ul class="nav flex-column mb-4">
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Dashboard" ? "active-menu" : "")"
                        href="/Dashboard">
+
                         <i class="bi bi-speedometer2"></i>
                         Dashboard
-                    </a>
-                </li>
 
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString() == "Expenses" ? "active-menu" : "")"
-                       href="/Expenses">
-                        <i class="bi bi-cash-stack"></i>
-                        Expenses
-                    </a>
-                </li>
-
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString() == "Income" ? "active-menu" : "")"
-                       href="/Income">
-                        <i class="bi bi-wallet2"></i>
-                        Income
-                    </a>
-                </li>
-
-                <!-- TRANSACTIONS -->
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString() == "Transactions" ? "active-menu" : "")"
-                       href="/Transactions">
-                        <i class="bi bi-receipt"></i>
-                        Transactions
-                    </a>
-                </li>
-
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString() == "Categories" ? "active-menu" : "")"
-                       href="/Categories">
-                        <i class="bi bi-tags"></i>
-                        Categories
-                    </a>
-                </li>
-
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString() == "Planner" ? "active-menu" : "")"
-                       href="/Planner">
-                        <i class="bi bi-calendar-check"></i>
-                        Planner
-                    </a>
-                </li>
-
-                <li class="nav-item mb-2">
-                    <a class="nav-link text-white @(ViewContext.RouteData.Values["controller"]?.ToString() == "Statistics" ? "active-menu" : "")"
-                       href="/Statistics">
-                        <i class="bi bi-graph-up"></i>
-                        Statistics
                     </a>
                 </li>
 
             </ul>
+
+            <!-- Finance -->
+            <small class="text-uppercase text-secondary fw-bold ps-2">
+                Finance
+            </small>
+
+            <ul class="nav flex-column mb-4">
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Transactions" ? "active-menu" : "")"
+                       href="/Transactions">
+
+                        <i class="bi bi-receipt"></i>
+                        Transactions
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Income" ? "active-menu" : "")"
+                       href="/Income">
+
+                        <i class="bi bi-wallet2"></i>
+                        Income
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Expenses" ? "active-menu" : "")"
+                       href="/Expenses">
+
+                        <i class="bi bi-cash-stack"></i>
+                        Expenses
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Budgets" ? "active-menu" : "")"
+                       href="/Budgets">
+
+                        <i class="bi bi-piggy-bank"></i>
+                        Budgets
+
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Categories" ? "active-menu" : "")"
+                       href="/Categories">
+
+                        <i class="bi bi-tags"></i>
+                        Categories
+
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Productivity -->
+            <small class="text-uppercase text-secondary fw-bold ps-2">
+                Productivity
+            </small>
+
+            <ul class="nav flex-column mb-4">
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Planner" ? "active-menu" : "")"
+                       href="/Planner">
+
+                        <i class="bi bi-calendar-check"></i>
+                        Planner
+
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Analytics -->
+            <small class="text-uppercase text-secondary fw-bold ps-2">
+                Analytics
+            </small>
+
+            <ul class="nav flex-column">
+
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Statistics" ? "active-menu" : "")"
+                       href="/Statistics">
+
+                        <i class="bi bi-graph-up"></i>
+                        Statistics
+
+                    </a>
+                </li>
+
+            </ul>
+
         </div>
 
-        <!-- MAIN CONTENT -->
+        <!-- Main Content -->
         <div class="main-content flex-grow-1">
 
-            <!-- TOPBAR -->
-            <nav class="navbar navbar-light bg-white shadow-sm px-4">
-                <span class="navbar-brand mb-0 h4">
-                    Financial Dashboard
-                </span>
+            <nav class="navbar bg-white shadow-sm px-4 py-3">
+
+                <div class="container-fluid px-0">
+
+                    <div>
+
+                        <h3 class="fw-bold mb-1">
+                            @ViewData["Title"]
+                        </h3>
+
+                        @if (currentController == "Dashboard")
+                        {
+                            <small class="text-muted">
+                                Welcome back! Manage your finances with confidence.
+                            </small>
+                        }
+
+                    </div>
+
+                    <div class="text-end">
+
+                        <div class="fw-semibold">
+                            @DateTime.Now.ToString("dddd")
+                        </div>
+
+                        <small class="text-muted">
+                            @DateTime.Now.ToString("dd MMMM yyyy")
+                        </small>
+
+                    </div>
+
+                </div>
+
             </nav>
 
-            <!-- PAGE CONTENT -->
             <div class="container-fluid p-4">
+
                 @RenderBody()
+
             </div>
 
         </div>
@@ -109,6 +209,7 @@
     </div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

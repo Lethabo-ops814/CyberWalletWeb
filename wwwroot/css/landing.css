@@ -1,0 +1,215 @@
+﻿html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.hero-section {
+    background-image: url('/images/landing-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(8, 33, 74, 0.70);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    color: white;
+    max-width: 700px;
+    text-align: center;
+    margin: auto;
+}
+
+    .hero-content h1 {
+        font-size: 4.5rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-content p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        color: #f1f1f1;
+    }
+
+    .hero-content .btn {
+        padding: 14px 35px;
+        border-radius: 50px;
+        font-size: 18px;
+        transition: .3s ease;
+    }
+
+        .hero-content .btn:hover {
+            transform: translateY(-3px);
+        }
+
+/* ==========================
+   SCROLL INDICATOR
+========================== */
+
+.scroll-indicator {
+    font-size: 40px;
+    margin-top: 60px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,20%,50%,80%,100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-12px);
+    }
+
+    60% {
+        transform: translateY(-6px);
+    }
+}
+
+/* ==========================
+   FEATURES
+========================== */
+
+.features-section {
+    padding: 100px 0;
+    background: #f5f7fb;
+}
+
+.feature-card {
+    border: none;
+    border-radius: 18px;
+    transition: .3s;
+}
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,.12);
+    }
+
+.feature-icon {
+    font-size: 60px;
+    color: #0d6efd;
+}
+
+.feature-card h4 {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.landing-footer {
+    background: #08214a;
+    color: white;
+    padding: 30px 0;
+}
+
+/* ==========================
+   LOGIN & REGISTER
+========================== */
+
+.auth-page {
+    background-image: url('/images/landing-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.auth-overlay {
+    background: rgba(8, 33, 74, 0.75);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.auth-card {
+    background: rgba(255,255,255,.97);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 45px rgba(0,0,0,.25);
+}
+
+    .auth-card h2 {
+        font-weight: bold;
+    }
+
+    .auth-card .form-control {
+        border-radius: 10px;
+        padding: 12px;
+        border: 1px solid #ced4da;
+    }
+
+        .auth-card .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
+        }
+
+    .auth-card .btn {
+        border-radius: 10px;
+        padding: 12px;
+        font-weight: 600;
+    }
+
+    .auth-card hr {
+        margin: 30px 0;
+    }
+
+    .auth-card a {
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .auth-card a:hover {
+            text-decoration: underline;
+        }
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width:768px) {
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-content .btn {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .feature-card {
+        margin-bottom: 20px;
+    }
+
+    .auth-card {
+        padding: 30px;
+    }
+}

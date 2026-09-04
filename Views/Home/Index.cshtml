@@ -1,8 +1,183 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = "_LandingLayout";
+    ViewData["Title"] = "Welcome";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero-section">
+
+    <div class="hero-overlay">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <h1 class="display-3 fw-bold">
+
+                    CyberWallet
+
+                </h1>
+
+                <p class="lead mt-4 mb-5">
+
+                    Manage your money smarter with one secure platform.
+                    Track your income, monitor expenses, create budgets,
+                    monitor your savings and gain valuable financial insights
+                    to achieve your financial goals.
+
+                </p>
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+                    <a href="/Account/Login"
+                       class="btn btn-primary btn-lg">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+
+                        Log In
+
+                    </a>
+
+                    <a href="/Account/Register"
+                       class="btn btn-outline-light btn-lg">
+
+                        <i class="bi bi-person-plus"></i>
+
+                        Register
+
+                    </a>
+
+                </div>
+
+                <div class="scroll-indicator">
+
+                    <i class="bi bi-chevron-double-down"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+
+                Why Choose CyberWallet?
+
+            </h2>
+
+            <p class="text-muted">
+
+                Everything you need to take control of your finances.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card feature-card h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-cash-coin feature-icon"></i>
+
+                        <h4 class="mt-4">
+
+                            Income Tracking
+
+                        </h4>
+
+                        <p>
+
+                            Keep track of every income source with ease and monitor your financial growth.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card feature-card h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-piggy-bank feature-icon"></i>
+
+                        <h4 class="mt-4">
+
+                            Budget Planning
+
+                        </h4>
+
+                        <p>
+
+                            Create budgets, monitor spending and stay in control of your finances.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card feature-card h-100">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-graph-up-arrow feature-icon"></i>
+
+                        <h4 class="mt-4">
+
+                            Financial Insights
+
+                        </h4>
+
+                        <p>
+
+                            View reports, statistics and charts to make informed financial decisions.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="landing-footer">
+
+    <div class="container text-center">
+
+        <p class="mb-0">
+
+            © 2026 CyberWallet. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>

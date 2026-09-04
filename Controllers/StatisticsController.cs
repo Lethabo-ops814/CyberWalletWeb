@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CyberWalletWeb.Data;
 using CyberWalletWeb.Models;
+using System.Text.Json;
 
 namespace CyberWalletWeb.Controllers
 {
@@ -10,17 +11,22 @@ namespace CyberWalletWeb.Controllers
         {
             var model = new StatisticsViewModel();
 
-            //Summary Cards
-            model.TotalIncome = IncomeRepository.Incomes.Sum(i => i.Amount);
+            // SUMMARY CARDS
+            model.TotalIncome =
+                IncomeRepository.Incomes.Sum(i => i.Amount);
 
-            model.TotalExpenses = ExpenseRepository.Expenses.Sum(e => e.Amount);
+            model.TotalExpenses =
+                ExpenseRepository.Expenses.Sum(e => e.Amount);
 
-            model.Balance = model.TotalIncome - model.TotalExpenses;
+            model.Balance =
+                model.TotalIncome - model.TotalExpenses;
 
-            model.TransactionCount = 
-                IncomeRepository.Incomes.Count + ExpenseRepository.Expenses.Count;
+            model.TransactionCount =
+                IncomeRepository.Incomes.Count +
+                ExpenseRepository.Expenses.Count;
 
-            //Expense breakdown
+            
+            // EXPENSE BREAKDOWN
             model.ExpenseByCategory =
                 ExpenseRepository.Expenses
                 .GroupBy(e => e.Category)
@@ -29,7 +35,13 @@ namespace CyberWalletWeb.Controllers
                     g => g.Sum(e => e.Amount)
                 );
 
-            // Income Breakdown
+            model.ExpenseLabelsJson =
+                JsonSerializer.Serialize(model.ExpenseByCategory.Keys);
+
+            model.ExpenseDataJson =
+                JsonSerializer.Serialize(model.ExpenseByCategory.Values);
+
+            // INCOME BREAKDOWN
             model.IncomeByCategory =
                 IncomeRepository.Incomes
                 .GroupBy(i => i.Source)
@@ -38,8 +50,29 @@ namespace CyberWalletWeb.Controllers
                     g => g.Sum(i => i.Amount)
                 );
 
+            model.IncomeLabelsJson =
+                JsonSerializer.Serialize(model.IncomeByCategory.Keys);
+
+            model.IncomeDataJson =
+                JsonSerializer.Serialize(model.IncomeByCategory.Values);
+
+            
+            // INCOME vs EXPENSES
+            model.ComparisonLabelsJson =
+                JsonSerializer.Serialize(new[]
+                {
+                    "Income",
+                    "Expenses"
+                });
+
+            model.ComparisonDataJson =
+                JsonSerializer.Serialize(new[]
+                {
+                    model.TotalIncome,
+                    model.TotalExpenses
+                });
+
             return View(model);
         }
     }
-    
 }

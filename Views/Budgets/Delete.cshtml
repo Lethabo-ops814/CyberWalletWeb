@@ -1,0 +1,71 @@
+﻿@model CyberWalletWeb.Models.Budget
+
+@{
+    ViewData["Title"] = "Delete Budget";
+}
+
+<h2 class="mb-4 text-danger">Delete Budget</h2>
+
+<div class="alert alert-warning">
+    <i class="bi bi-exclamation-triangle-fill"></i>
+    Are you sure you want to delete this budget? This action cannot be undone.
+</div>
+
+<div class="card">
+
+    <div class="card-body">
+
+        <dl class="row">
+
+            <dt class="col-sm-3">
+                Budget Name
+            </dt>
+
+            <dd class="col-sm-9">
+                @Model.Name
+            </dd>
+
+            <dt class="col-sm-3">
+                Category
+            </dt>
+
+            <dd class="col-sm-9">
+                @Model.Category
+            </dd>
+
+            <dt class="col-sm-3">
+                Amount
+            </dt>
+
+            <dd class="col-sm-9">
+                R @Model.Amount
+            </dd>
+
+            <dt class="col-sm-3">
+                Month
+            </dt>
+
+            <dd class="col-sm-9">
+                @Model.Month
+            </dd>
+
+        </dl>
+
+        <form asp-action="Delete" method="post">
+
+            <input asp-for="Id" type="hidden" />
+
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i>
+                Delete Budget
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>

@@ -4,51 +4,149 @@
     ViewData["Title"] = "Planner";
 }
 
-<h2 class="mb-4">Financial Planner</h2>
-
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-lg-6 mb-4">
 
-        <div class="card shadow-sm p-4 mb-4">
+        <div class="card shadow-sm h-100">
 
-            <h5>Monthly Budget</h5>
+            <div class="card-body">
 
-            <h2>R @Model.MonthlyBudget</h2>
+                <h5 class="card-title">
+                    <i class="bi bi-piggy-bank text-primary"></i>
+                    Monthly Budget
+                </h5>
 
-            <div class="progress mt-3" style="height:25px;">
-                <div class="progress-bar bg-primary"
-                     style="width:@(Model.BudgetProgress)%;">
-                    @Model.BudgetProgress%
+                <h2 class="fw-bold text-primary">
+                    R @Model.MonthlyBudget
+                </h2>
+
+                <div class="progress mt-4" style="height:25px;">
+
+                    <div class="progress-bar bg-primary"
+                         role="progressbar"
+                         style="width:@(Model.BudgetProgress)%">
+
+                        @Model.BudgetProgress%
+
+                    </div>
+
                 </div>
-            </div>
 
-            <p class="mt-3">
-                Spending: R @Model.CurrentSpending
-            </p>
+                <p class="mt-3 mb-0">
+                    Current Spending
+                </p>
+
+                <h5 class="fw-semibold">
+                    R @Model.CurrentSpending
+                </h5>
+
+            </div>
 
         </div>
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-lg-6 mb-4">
 
-        <div class="card shadow-sm p-4">
+        <div class="card shadow-sm h-100">
 
-            <h5>Savings Goal</h5>
+            <div class="card-body">
 
-            <h2>R @Model.SavingsGoal</h2>
+                <h5 class="card-title">
+                    <i class="bi bi-wallet2 text-success"></i>
+                    Savings Goal
+                </h5>
 
-            <div class="progress mt-3" style="height:25px;">
-                <div class="progress-bar bg-success"
-                     style="width:@(Model.SavingsProgress)%;">
-                    @Model.SavingsProgress%
+                <h2 class="fw-bold text-success">
+                    R @Model.SavingsGoal
+                </h2>
+
+                <div class="progress mt-4" style="height:25px;">
+
+                    <div class="progress-bar bg-success"
+                         role="progressbar"
+                         style="width:@(Model.SavingsProgress)%">
+
+                        @Model.SavingsProgress%
+
+                    </div>
+
                 </div>
+
+                <p class="mt-3 mb-0">
+                    Current Savings
+                </p>
+
+                <h5 class="fw-semibold">
+                    R @Model.CurrentSavings
+                </h5>
+
             </div>
 
-            <p class="mt-3">
-                Saved: R @Model.CurrentSavings
-            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <h4 class="mb-4">
+            <i class="bi bi-clipboard-data"></i>
+            Financial Overview
+        </h4>
+
+        <div class="row text-center">
+
+            <div class="col-md-4">
+
+                <h6 class="text-muted">
+                    Remaining Budget
+                </h6>
+
+                <h3 class="fw-bold text-primary">
+                    R @Model.RemainingBudget
+                </h3>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h6 class="text-muted">
+                    Remaining Savings
+                </h6>
+
+                <h3 class="fw-bold text-success">
+                    R @Model.RemainingSavings
+                </h3>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h6 class="text-muted">
+                    Financial Status
+                </h6>
+
+                @if (Model.FinancialStatus == "On Track")
+                {
+                    <span class="badge bg-success fs-6 px-3 py-2">
+                        <i class="bi bi-check-circle-fill"></i>
+                        @Model.FinancialStatus
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-danger fs-6 px-3 py-2">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        @Model.FinancialStatus
+                    </span>
+                }
+
+            </div>
 
         </div>
 
