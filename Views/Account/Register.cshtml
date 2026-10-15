@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "_LandingLayout";
     ViewData["Title"] = "Register";
+    ViewData["Title"] = "RegisterUser";
 }
 
 <div class="auth-page">
@@ -34,7 +35,7 @@
                             </div>
                         }
 
-                        <form method="post">
+                        <form asp-controller="Account" asp-action="RegisterUser" method="get">
 
                             <div class="mb-3">
 
@@ -99,7 +100,7 @@
 
                                 Create Account
 
-                            </button>
+                            </button> 
 
                         </form>
 

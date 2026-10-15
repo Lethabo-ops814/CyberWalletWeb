@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CyberWalletWeb.Data;
 using CyberWalletWeb.Models;
-using CyberWalletWeb.Data;
+using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace CyberWalletWeb.Controllers
 {
     public class BudgetsController : Controller
     {
+
+
+        private static readonly HttpClient client = new HttpClient();
+
         // Display all budgets
         public IActionResult Index()
         {
@@ -23,6 +28,43 @@ namespace CyberWalletWeb.Controllers
         [HttpPost]
         public IActionResult Create(Budget budget)
         {
+
+            //string nodeUrl = "http://localhost:3000/api/restaurant/restaurant";
+
+
+            //try
+            //{
+            //    // 1. Serialize the C# object into a JSON string
+            //    //string jsonPayload = JsonConvert.SerializeObject(dataToSend);
+
+            //    // 2. Wrap the payload in an StringContent envelope with JSON media type
+            //    var content = new StringContent("test", Encoding.UTF8, "application/json");
+
+            //    // 3. Post the data asynchronously to the Node.js server
+            //    HttpResponseMessage response = await client.GetAsync(nodeUrl);
+            //    //PostAsync(nodeUrl, content);
+
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        // Read response if necessary
+            //        string responseResult = await response.Content.ReadAsStringAsync();
+            //        ViewBag.Message = "Data successfully sent to Node.js!";
+            //        return RedirectToAction("Login");
+            //    }
+            //    else
+            //    {
+            //        ViewBag.Message = $"Error: Server responded with status code {response.StatusCode}";
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ViewBag.Message = $"Exception occurred: {ex.Message}";
+            //    Console.WriteLine(ex.Message);
+            //}
+
+
+
+
             if (!ModelState.IsValid)
             {
                 return View(budget);
@@ -39,6 +81,45 @@ namespace CyberWalletWeb.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+
+
+            //string nodeUrl = "http://localhost:3000/api/restaurant/restaurant";
+
+
+            //try
+            //{
+            //    // 1. Serialize the C# object into a JSON string
+            //    //string jsonPayload = JsonConvert.SerializeObject(dataToSend);
+
+            //    // 2. Wrap the payload in an StringContent envelope with JSON media type
+            //    var content = new StringContent("test", Encoding.UTF8, "application/json");
+
+            //    // 3. Post the data asynchronously to the Node.js server
+            //    HttpResponseMessage response = await client.GetAsync(nodeUrl);
+            //    //PostAsync(nodeUrl, content);
+
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        // Read response if necessary
+            //        string responseResult = await response.Content.ReadAsStringAsync();
+            //        ViewBag.Message = "Data successfully sent to Node.js!";
+            //        return RedirectToAction("Login");
+            //    }
+            //    else
+            //    {
+            //        ViewBag.Message = $"Error: Server responded with status code {response.StatusCode}";
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ViewBag.Message = $"Exception occurred: {ex.Message}";
+            //    Console.WriteLine(ex.Message);
+            //}
+
+
+
+
+
             var budget = BudgetRepository.Budgets
                 .FirstOrDefault(b => b.Id == id);
 
